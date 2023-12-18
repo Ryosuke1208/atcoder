@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "queue": "cpp"
+    },
+    "C_Cpp.clang_format_style": "{BasedOnStyle: Google, IndentWidth: 4}",
+    "cmake.configureOnOpen": false
+}
