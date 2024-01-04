@@ -1,6 +1,7 @@
 {
   "version": "2.0.0",
   "tasks": [
+    /*
     // python version
     {
       "label": "CheckTestCase",
@@ -22,28 +23,27 @@
         "panel": "shared"
       }
     }
+    */
     // cpp version
-    /*
-      {
-        "label": "CheckTestCase",
-        "type": "shell",
-        "command": "cd ${fileDirname} && clang++ -std=c++17 main.cpp && oj t -d ./tests/",
-        "presentation": {
-          "reveal": "always",
-          "focus": true,
-          "panel": "shared"
-        }
-      },
-      {
-        "label": "SubmitCode",
-        "type": "shell",
-        "command": "cd ${fileDirname} && acc s ${fileBasename}",
-        "presentation": {
-          "reveal": "always",
-          "focus": true,
-          "panel": "shared"
-        }
+    {
+      "label": "CheckTestCase",
+      "type": "shell",
+      "command": "cd ${fileDirname} && clang++ -std=c++17 main.cpp && oj t -d ./tests/",
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
       }
-      */
+    },
+    {
+      "label": "SubmitCode",
+      "type": "shell",
+      "command": "cd ${fileDirname} && acc s ${fileBasename}",
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    }
   ]
 }
