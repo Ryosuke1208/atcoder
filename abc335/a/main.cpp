@@ -31,15 +31,12 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-ll solve(ll n, ll cnt) {
-    if (cnt == 1) return n * 100 / 100;
-    return solve(n, cnt - 1);
-}
-
 int main() {
-    ll s, p;
-    cin >> s >> p;
-
+    string s;
+    cin >> s;
+    rep(i, s.size() - 1) cout << s[i];
+    cout << 4;
+    cout << endl;
     return 0;
 }
 

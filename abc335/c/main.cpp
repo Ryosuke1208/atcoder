@@ -31,15 +31,31 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-ll solve(ll n, ll cnt) {
-    if (cnt == 1) return n * 100 / 100;
-    return solve(n, cnt - 1);
-}
-
 int main() {
-    ll s, p;
-    cin >> s >> p;
-
+    int n, q;
+    cin >> n >> q;
+    deque<P> v;
+    rep(i, n) v.push_back(P(i + 1, 0));
+    while (q--) {
+        int num;
+        cin >> num;
+        if (num == 2) {
+            int p;
+            cin >> p;
+            cout << v[p - 1].first << " " << v[p - 1].second << endl;
+        } else {
+            char c;
+            cin >> c;
+            int x, y;
+            x = v[0].first, y = v[0].second;
+            if (c == 'R') x++;
+            if (c == 'L') x--;
+            if (c == 'U') y++;
+            if (c == 'D') y--;
+            v.pop_back();
+            v.push_front(P(x, y));
+        }
+    }
     return 0;
 }
 

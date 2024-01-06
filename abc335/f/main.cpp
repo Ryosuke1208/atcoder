@@ -9,16 +9,14 @@ using namespace std;
 typedef long long ll;
 const int inf = INT_MAX / 2;
 const ll infl = 1LL << 60;
-template <class T>
-inline bool chmin(T &a, T b) {
+template <class T> inline bool chmin(T &a, T b) {
     if (a > b) {
         a = b;
         return true;
     }
     return false;
 }
-template <class T>
-inline bool chmax(T &a, T b) {
+template <class T> inline bool chmax(T &a, T b) {
     if (a < b) {
         a = b;
         return true;
@@ -31,14 +29,9 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-ll solve(ll n, ll cnt) {
-    if (cnt == 1) return n * 100 / 100;
-    return solve(n, cnt - 1);
-}
-
 int main() {
-    ll s, p;
-    cin >> s >> p;
+    int n;
+    cin >> n;
 
     return 0;
 }

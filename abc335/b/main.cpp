@@ -31,15 +31,16 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-ll solve(ll n, ll cnt) {
-    if (cnt == 1) return n * 100 / 100;
-    return solve(n, cnt - 1);
-}
-
 int main() {
-    ll s, p;
-    cin >> s >> p;
-
+    int n;
+    cin >> n;
+    rep(i, n + 1) {
+        rep(j, n + 1) {
+            rep(k, n + 1) {
+                if (i + j + k <= n) cout << i << " " << j << " " << k << endl;
+            }
+        }
+    }
     return 0;
 }
 

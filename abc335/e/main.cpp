@@ -31,14 +31,24 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-ll solve(ll n, ll cnt) {
-    if (cnt == 1) return n * 100 / 100;
-    return solve(n, cnt - 1);
-}
-
 int main() {
-    ll s, p;
-    cin >> s >> p;
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    rep(i, n) cin >> a[i];
+    vector<vector<int>> g(n);
+    rep(i, m) {
+        int u, v;
+        cin >> u >> v;
+        --u, --v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    vector<int> used(n, 0);
+    auto dfs = [&](vector<vector<int>> g, int s) {
+        used[s] = 1;
+        
+    };
 
     return 0;
 }
