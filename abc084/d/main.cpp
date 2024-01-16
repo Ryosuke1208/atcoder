@@ -30,24 +30,37 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-int main() {
-    int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
-        for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
-                ans++;
-                break;
+vector<int> era(int n) {
+    vector<int> v(n + 1, 1);
+    v[0] = v[1] = 0;
+    for (int i = 2; i < sqrt(n); i++) {
+        if (v[i]) {
+            for (int j = 0; i * (j + 2) < n; j++) {
+                v[i * (j + 2)] = 0;
             }
         }
     }
-    cout << ans << endl;
+    return v;
+}
+
+const int N = 1e5 + 9;
+int a[N], b[N];
+
+int main() {
+    auto pr = era(N);
+    for (int i = 1; i < N; i += 2)
+        if (pr[i] && pr[(i + 1) / 2]) a[i] = 1;
+    for (int i = 1; i < N; i++) b[i] = b[i - 1] + a[i];
+
+    int q;
+    cin >> q;
+    rep(_, q) {
+        int l, r;
+        cin >> l >> r;
+        int ans = b[r] - b[l - 1];
+        cout << ans << endl;
+    }
+
     return 0;
 }
 /***************thinking***************/

@@ -31,23 +31,22 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
-        for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
-                ans++;
-                break;
-            }
+    int l, q;
+    cin >> l >> q;
+    set<int> cut;
+    cut.insert(0);
+    cut.insert(l);
+    rep(_, q) {
+        int c, x;
+        cin >> c >> x;
+        if (c == 1)
+            cut.insert(x);
+        else {
+            auto ato = cut.lower_bound(x);
+            auto mae = prev(ato, 1);
+            cout << *ato - *mae << endl;
         }
     }
-    cout << ans << endl;
     return 0;
 }
 /***************thinking***************/

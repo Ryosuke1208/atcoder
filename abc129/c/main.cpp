@@ -30,24 +30,25 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
+const ll MOD = 1e9 + 7;
+const int N = 1e5 + 10;
+int dp[N] = {0};
+bool ng[N] = {false};
+
 int main() {
-    int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
-        for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
-                ans++;
-                break;
-            }
-        }
+    int n, m;
+    cin >> n >> m;
+    rep(_, m) {
+        int a;
+        cin >> a;
+        ng[a] = true;
     }
-    cout << ans << endl;
+    dp[0] = 1;
+    for (int i = 0; i <= n; i++) {
+        if (!ng[i + 1]) dp[i + 1] = (dp[i] + dp[i + 1]) % MOD;
+        if (!ng[i + 2]) dp[i + 2] = (dp[i] + dp[i + 2]) % MOD;
+    }
+    cout << dp[n] << endl;
     return 0;
 }
 /***************thinking***************/

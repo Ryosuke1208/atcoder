@@ -30,23 +30,25 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
+const ll MOD = 1e9 + 7;
+
 int main() {
-    int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    rep(i, n) cin >> a[i];
+    ll b = 0, c = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i] > a[j]) b++;
+        }
         for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
-                ans++;
-                break;
-            }
+            if (a[i] > a[j]) c++;
         }
     }
+    ll ans = 0;
+    ans = b * k % MOD;
+    ans = (ans + (c * (k * (k - 1) / 2 % MOD) % MOD)) % MOD;
     cout << ans << endl;
     return 0;
 }

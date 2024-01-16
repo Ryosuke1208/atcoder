@@ -31,23 +31,40 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
-        for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(m + 1);
+    vector<int> scores(n + 1, 0);
+    vector<int> no[n + 1];
+    for (int i = 1; i <= m; i++) cin >> a[i];
+    int ma = -1;
+    for (int i = 1; i <= n; i++) {
+        string s;
+        cin >> s;
+        for (int j = 1; j <= m; j++) {
+            if (s[j - 1] == 'o')
+                scores[i] += a[j];
+            else
+                no[i].push_back(a[j]);
+        }
+        scores[i] += i;
+        sort(all(no[i]));
+        reverse(all(no[i]));
+        ma = max(ma, scores[i]);
+    }
+    for (int i = 1; i <= n; i++) {
+        int ans = 0;
+        if (scores[i] < ma) {
+            int idx = 0;
+            while (scores[i] < ma) {
+                scores[i] += no[i][idx];
+                idx++;
                 ans++;
-                break;
             }
         }
+        cout << ans << endl;
     }
-    cout << ans << endl;
+
     return 0;
 }
 /***************thinking***************/

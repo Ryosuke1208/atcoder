@@ -30,22 +30,22 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
+const ll N = 1e5 + 100;
+
 int main() {
     int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
-        for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
-                ans++;
-                break;
-            }
-        }
+    cin >> n;
+    vector<int> a(n), b(n), c(n);
+    rep(i, n) cin >> a[i];
+    rep(i, n) cin >> b[i];
+    rep(i, n) cin >> c[i];
+    sort(all(a));
+    sort(all(c));
+    ll ans = 0;
+    rep(i, n) {
+        ll ai = lower_bound(all(a), b[i]) - a.begin();
+        ll ci = n - (upper_bound(all(c), b[i]) - c.begin());
+        ans += ai * ci;
     }
     cout << ans << endl;
     return 0;

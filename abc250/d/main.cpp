@@ -30,22 +30,39 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-int main() {
-    int n;
-    string s;
-    cin >> n >> s;
-    int ans = 0;
-    for (int i = 0; i < 1000; i++) {
-        string num = to_string(i);
-        if (num.size() < 3) num = string(3 - num.size(), '0') + num;
-        int idx = 0;
-        for (int j = 0; j < n; j++) {
-            if (s[j] == num[idx]) idx++;
-            if (idx == 3) {
-                ans++;
-                break;
-            }
+vector<int> era(int n) {
+    vector<int> res;
+    vector<bool> isprime(n, true);
+    isprime[0] = false;
+    isprime[1] = false;
+    for (int i = 2; i < n; i++) {
+        if (isprime[i]) {
+            res.push_back(i);
+            for (int j = i * 2; j < n; j += i) isprime[j] = false;
         }
+    }
+    return res;
+}
+
+int main() {
+    ll n;
+    cin >> n;
+
+    vector<int> pr = era(1e6);
+
+    ll ans = 0;
+    for (ll q : pr) {
+        if (q * q * q > n) break;
+        ll pmax = min(q - 1, n / q / q / q);
+        ll l = -1, r = pr.size();
+        while (r - l > 1) {
+            ll m = (l + r) / 2;
+            if (pr[m] > pmax)
+                r = m;
+            else
+                l = m;
+        }
+        ans += r;
     }
     cout << ans << endl;
     return 0;
