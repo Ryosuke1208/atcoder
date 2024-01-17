@@ -31,34 +31,18 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, q;
-    cin >> n >> q;
-    vector<int> a(n);
-    vector<int> b(n + 1, 0);
-    rep(i, n) {
-        cin >> a[i];
-        if (a[i] <= n) {
-            b[a[i]]++;
-        }
+    ll n;
+    cin >> n, n--;
+    vector<int> ans;
+    string c = "02468";
+    while (n) {
+        ans.push_back(n % 5);
+        n /= 5;
     }
-    set<int> st;
-    rep(i, n + 1) if (b[i] == 0) st.insert(i);
-    while (q) {
-        q--;
-        int i, x;
-        cin >> i >> x;
-        i--;
-        if (a[i] <= n) {
-            b[a[i]]--;
-            if (b[a[i]] == 0) st.insert(a[i]);
-        }
-        a[i] = x;
-        if (a[i] <= n) {
-            if (b[a[i]] == 0) st.erase(a[i]);
-            b[a[i]]++;
-        }
-        cout << (*st.begin()) << endl;
-    }
+    if (ans.empty()) ans.push_back(0);
+    reverse(all(ans));
+    rep(i, ans.size()) { cout << c[ans[i]]; }
+    cout << endl;
     return 0;
 }
 /***************thinking***************/

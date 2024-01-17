@@ -31,34 +31,36 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, q;
-    cin >> n >> q;
-    vector<int> a(n);
-    vector<int> b(n + 1, 0);
+    int n, m;
+    cin >> n >> m;
+    vector<string> c;
     rep(i, n) {
-        cin >> a[i];
-        if (a[i] <= n) {
-            b[a[i]]++;
-        }
+        string s;
+        cin >> s;
+        c.push_back(s);
     }
-    set<int> st;
-    rep(i, n + 1) if (b[i] == 0) st.insert(i);
-    while (q) {
-        q--;
-        int i, x;
-        cin >> i >> x;
-        i--;
-        if (a[i] <= n) {
-            b[a[i]]--;
-            if (b[a[i]] == 0) st.insert(a[i]);
-        }
-        a[i] = x;
-        if (a[i] <= n) {
-            if (b[a[i]] == 0) st.erase(a[i]);
-            b[a[i]]++;
-        }
-        cout << (*st.begin()) << endl;
+    map<string, int> ma;
+    vector<string> plate;
+    vector<int> cost;
+    rep(i, m) {
+        string s;
+        cin >> s;
+        plate.push_back(s);
     }
+    rep(i, m + 1) {
+        int p;
+        cin >> p;
+        cost.push_back(p);
+    }
+    rep(i, m) { ma[plate[i]] = cost[i + 1]; }
+    int ans = 0;
+    for (string s : c) {
+        if (ma[s])
+            ans += ma[s];
+        else
+            ans += cost[0];
+    }
+    cout << ans << endl;
     return 0;
 }
 /***************thinking***************/
