@@ -32,6 +32,22 @@ using P = pair<int, int>;
 
 /********************code********************/
 
+int main() {
+    string s;
+    cin >> s;
+    string t;
+    for (char c : s) {
+        t += c;
+        if (t.size() >= 3 && t.substr(t.size() - 3) == "ABC") {
+            t.pop_back();
+            t.pop_back();
+            t.pop_back();
+        }
+    }
+    cout << t << endl;
+    return 0;
+}
+
 /***************thinking***************/
 /*
 
