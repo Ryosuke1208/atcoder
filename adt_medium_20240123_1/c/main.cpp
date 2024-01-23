@@ -32,32 +32,27 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<ll> x(n + 1);
-    rep(i, n) cin >> x[i + 1];
+    ll n, m, t;
+    cin >> n >> m >> t;
+    vector<ll> a(n + 1);
     vector<ll> b(n + 1);
-    rep(i, m) {
-        int c, y;
-        cin >> c >> y;
-        b[c] += y;
+    for (int i = 1; i <= n - 1; i++) cin >> a[i];
+    rep(_, m) {
+        int x, y;
+        cin >> x >> y;
+        b[x] = y;
     }
-    vector dp(n + 1, vector<ll>(n + 1, -infl));
-    dp[0][0] = 0;
-    for (int i = 1; i <= n; i++) {
-        rep(j, n + 1) {
-            ll now = -infl;
-            if (j == 0) {
-                rep(k, n + 1) now = max(now, dp[i - 1][k]);
-            } else {
-                now = dp[i - 1][j - 1] + x[i] + b[j];
-            }
-            dp[i][j] = now;
+    int pos = 1;
+    while (pos < n) {
+        if (a[pos] >= t) {
+            cout << "No" << endl;
+            return 0;
         }
+        t -= a[pos];
+        pos++;
+        t += b[pos];
     }
-    ll ans = 0;
-    rep(j, n + 1) ans = max(ans, dp[n][j]);
-    cout << ans << endl;
+    cout << "Yes" << endl;
     return 0;
 }
 

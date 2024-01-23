@@ -32,32 +32,21 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<ll> x(n + 1);
-    rep(i, n) cin >> x[i + 1];
-    vector<ll> b(n + 1);
-    rep(i, m) {
-        int c, y;
-        cin >> c >> y;
-        b[c] += y;
+    int n;
+    cin >> n;
+    int a = 0, b = 0;
+    rep(i, n) {
+        int x, y;
+        cin >> x >> y;
+        a += x, b += y;
     }
-    vector dp(n + 1, vector<ll>(n + 1, -infl));
-    dp[0][0] = 0;
-    for (int i = 1; i <= n; i++) {
-        rep(j, n + 1) {
-            ll now = -infl;
-            if (j == 0) {
-                rep(k, n + 1) now = max(now, dp[i - 1][k]);
-            } else {
-                now = dp[i - 1][j - 1] + x[i] + b[j];
-            }
-            dp[i][j] = now;
-        }
+    if (a == b) {
+        cout << "Draw" << endl;
+    } else if (a > b) {
+        cout << "Takahashi" << endl;
+    } else {
+        cout << "Aoki" << endl;
     }
-    ll ans = 0;
-    rep(j, n + 1) ans = max(ans, dp[n][j]);
-    cout << ans << endl;
     return 0;
 }
 

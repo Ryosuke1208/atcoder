@@ -32,31 +32,19 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<ll> x(n + 1);
-    rep(i, n) cin >> x[i + 1];
-    vector<ll> b(n + 1);
-    rep(i, m) {
-        int c, y;
-        cin >> c >> y;
-        b[c] += y;
-    }
-    vector dp(n + 1, vector<ll>(n + 1, -infl));
-    dp[0][0] = 0;
-    for (int i = 1; i <= n; i++) {
-        rep(j, n + 1) {
-            ll now = -infl;
-            if (j == 0) {
-                rep(k, n + 1) now = max(now, dp[i - 1][k]);
-            } else {
-                now = dp[i - 1][j - 1] + x[i] + b[j];
-            }
-            dp[i][j] = now;
+    string n;
+    cin >> n;
+    sort(all(n));
+    int ans = -inf;
+    do {
+        for (int i = 1; i < n.size(); i++) {
+            string s1 = "", s2 = "";
+            for (int j = 0; j < i; j++) s1 += n[j];
+            for (int j = i; j < n.size(); j++) s2 += n[j];
+            if (s1[0] == '0' || s2[0] == '0') continue;
+            ans = max(ans, stoi(s1) * stoi(s2));
         }
-    }
-    ll ans = 0;
-    rep(j, n + 1) ans = max(ans, dp[n][j]);
+    } while (next_permutation(all(n)));
     cout << ans << endl;
     return 0;
 }

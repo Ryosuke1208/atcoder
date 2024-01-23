@@ -26,41 +26,44 @@ inline bool chmax(T &a, T b) {
     return false;
 }
 
-using P = pair<int, int>;
 // using mint = modint998244353;
 /********************************************/
 
 /********************code********************/
-int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<ll> x(n + 1);
-    rep(i, n) cin >> x[i + 1];
-    vector<ll> b(n + 1);
-    rep(i, m) {
-        int c, y;
-        cin >> c >> y;
-        b[c] += y;
+using P = pair<char, int>;
+
+vector<P> rle(const string &s) {
+    vector<P> res;
+    for (char c : s) {
+        if (res.size() > 0 && res.back().first == c)
+            res.back().second++;
+        else
+            res.emplace_back(c, 1);
     }
-    vector dp(n + 1, vector<ll>(n + 1, -infl));
-    dp[0][0] = 0;
-    for (int i = 1; i <= n; i++) {
-        rep(j, n + 1) {
-            ll now = -infl;
-            if (j == 0) {
-                rep(k, n + 1) now = max(now, dp[i - 1][k]);
-            } else {
-                now = dp[i - 1][j - 1] + x[i] + b[j];
-            }
-            dp[i][j] = now;
-        }
-    }
-    ll ans = 0;
-    rep(j, n + 1) ans = max(ans, dp[n][j]);
-    cout << ans << endl;
-    return 0;
+    return res;
 }
 
+bool solve() {
+    string s;
+    cin >> s;
+    auto a = rle(s);
+    if (a.size() > 3) return false;
+    rep(i, a.size()) {
+        if (i == 0) {
+            if (a[i].first != 'A') return false;
+        } else if (i == 1) {
+            if (a[i].first != 'B') return false;
+        } else {
+            if (a[i].first != 'C') return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    cout << (solve() ? "Yes" : "No") << endl;
+    return 0;
+}
 /***************thinking***************/
 /*
 

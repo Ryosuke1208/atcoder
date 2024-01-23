@@ -32,32 +32,35 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<ll> x(n + 1);
-    rep(i, n) cin >> x[i + 1];
-    vector<ll> b(n + 1);
-    rep(i, m) {
-        int c, y;
-        cin >> c >> y;
-        b[c] += y;
-    }
-    vector dp(n + 1, vector<ll>(n + 1, -infl));
-    dp[0][0] = 0;
+    int n;
+    cin >> n;
+    vector<int> a(n + 1);
+    int first = 0;
     for (int i = 1; i <= n; i++) {
-        rep(j, n + 1) {
-            ll now = -infl;
-            if (j == 0) {
-                rep(k, n + 1) now = max(now, dp[i - 1][k]);
-            } else {
-                now = dp[i - 1][j - 1] + x[i] + b[j];
-            }
-            dp[i][j] = now;
+        cin >> a[i];
+        if (a[i] == -1) first = i;
+    }
+
+    vector<int> order;
+    order.push_back(first);
+
+    for (int i = 1; i <= n; i++) {
+        if (a[i] == -1) continue;
+        auto it1 = find(order.begin(), order.end(), a[i]);
+        auto it2 = find(order.begin(), order.end(), i);
+        if (it1 != order.end() && it2 != order.end()) continue;
+
+        if (it1 == order.end() && it2 == order.end()) {
+            order.push_back(a[i]);
+            order.push_back(i);
+        } else if (it1 != order.end()) {
+            order.insert(it1 + 1, i);
+        } else if (it2 != order.end()) {
+            order.insert(it2, a[i]);
         }
     }
-    ll ans = 0;
-    rep(j, n + 1) ans = max(ans, dp[n][j]);
-    cout << ans << endl;
+
+    rep(i, order.size()) cout << order[i] << " ";
     return 0;
 }
 

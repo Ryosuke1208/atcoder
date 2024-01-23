@@ -32,32 +32,12 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<ll> x(n + 1);
-    rep(i, n) cin >> x[i + 1];
-    vector<ll> b(n + 1);
-    rep(i, m) {
-        int c, y;
-        cin >> c >> y;
-        b[c] += y;
-    }
-    vector dp(n + 1, vector<ll>(n + 1, -infl));
-    dp[0][0] = 0;
-    for (int i = 1; i <= n; i++) {
-        rep(j, n + 1) {
-            ll now = -infl;
-            if (j == 0) {
-                rep(k, n + 1) now = max(now, dp[i - 1][k]);
-            } else {
-                now = dp[i - 1][j - 1] + x[i] + b[j];
-            }
-            dp[i][j] = now;
-        }
-    }
-    ll ans = 0;
-    rep(j, n + 1) ans = max(ans, dp[n][j]);
-    cout << ans << endl;
+    double a, b, d;
+    cin >> a >> b >> d;
+    double rad = d * M_PI / 180.0;
+    double x = a * cos(rad) - b * sin(rad);
+    double y = a * sin(rad) + b * cos(rad);
+    printf("%.12f %.12f\n", x, y);
     return 0;
 }
 

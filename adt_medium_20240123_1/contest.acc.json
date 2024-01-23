@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "adt_medium_20240123_1",
+    "title": "AtCoder Daily Training MEDIUM 2024/01/23 15:30start",
+    "url": "https://atcoder.jp/contests/adt_medium_20240123_1"
+  },
+  "tasks": [
+    {
+      "id": "abc265_b",
+      "label": "C",
+      "title": "Explore",
+      "url": "https://atcoder.jp/contests/adt_medium_20240123_1/tasks/abc265_b",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc259_b",
+      "label": "D",
+      "title": "Counterclockwise Rotation",
+      "url": "https://atcoder.jp/contests/adt_medium_20240123_1/tasks/abc259_b",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc221_c",
+      "label": "E",
+      "title": "Select Mul",
+      "url": "https://atcoder.jp/contests/adt_medium_20240123_1/tasks/abc221_c",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc250_c",
+      "label": "F",
+      "title": "Adjacent Swaps",
+      "url": "https://atcoder.jp/contests/adt_medium_20240123_1/tasks/abc250_c",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc330_d",
+      "label": "G",
+      "title": "Counting Ls",
+      "url": "https://atcoder.jp/contests/adt_medium_20240123_1/tasks/abc330_d",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
