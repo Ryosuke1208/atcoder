@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "adt_medium_20240124_3",
+    "title": "AtCoder Daily Training MEDIUM 2024/01/24 20:00start",
+    "url": "https://atcoder.jp/contests/adt_medium_20240124_3"
+  },
+  "tasks": [
+    {
+      "id": "abc212_b",
+      "label": "C",
+      "title": "Weak Password",
+      "url": "https://atcoder.jp/contests/adt_medium_20240124_3/tasks/abc212_b",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc230_b",
+      "label": "D",
+      "title": "Triple Metre",
+      "url": "https://atcoder.jp/contests/adt_medium_20240124_3/tasks/abc230_b",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc214_c",
+      "label": "E",
+      "title": "Distribution",
+      "url": "https://atcoder.jp/contests/adt_medium_20240124_3/tasks/abc214_c",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc230_c",
+      "label": "F",
+      "title": "X drawing",
+      "url": "https://atcoder.jp/contests/adt_medium_20240124_3/tasks/abc230_c",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "abc260_d",
+      "label": "G",
+      "title": "Draw Your Cards",
+      "url": "https://atcoder.jp/contests/adt_medium_20240124_3/tasks/abc260_d",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
