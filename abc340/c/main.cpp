@@ -6,7 +6,7 @@
 #define all(x) (x).begin(), (x).end()
 using namespace std;
 // using namespace atcoder;
-typedef long long ll;
+typedef unsigned long long ll;
 const int inf = INT_MAX / 2;
 const ll infl = 1LL << 60;
 template <class T>
@@ -31,9 +31,19 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
+unordered_map<ll, ll> memo;
+
+ll f(ll x) {
+    if (x == 1) return 0;
+    if (memo.count(x)) return memo[x];
+    ll res = f(x / 2) + f(x - x / 2) + x;
+    return memo[x] = res;
+}
+
 int main() {
-    int n;
+    ll n;
     cin >> n;
+    cout << f(n) << endl;
     return 0;
 }
 

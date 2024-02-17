@@ -32,8 +32,10 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n;
-    cin >> n;
+    int a, b, d;
+    cin >> a >> b >> d;
+    for (int i = a; i <= b; i += d) cout << i << " ";
+    cout << endl;
     return 0;
 }
 

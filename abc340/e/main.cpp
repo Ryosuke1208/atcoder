@@ -32,8 +32,30 @@ using P = pair<int, int>;
 
 /********************code********************/
 int main() {
-    int n;
-    cin >> n;
+    int N, M;
+    cin >> N >> M;
+    vector<int> A(N), B(M), C(N);
+    for (int i = 0; i < N; i++) cin >> A[i];
+    for (int i = 0; i < M; i++) cin >> B[i];
+
+    for (int i = 0; i < M; i++) {
+        int balls = A[B[i]];
+        A[B[i]] = 0;
+        int j = B[i];
+        C[j] += balls;
+        C[(j + balls) % N] -= balls;
+    }
+
+    for (int i = 1; i < N; i++) {
+        C[i] += C[i - 1];
+    }
+
+    for (int i = 0; i < N; i++) {
+        A[i] += C[i];
+        cout << A[i] << " ";
+    }
+    cout << endl;
+
     return 0;
 }
 
