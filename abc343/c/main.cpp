@@ -31,30 +31,27 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-const int MAX_N = 2e5 + 5;
-double dp[MAX_N];
-int N, D, L;
+bool solve(string s) {
+    int n = s.size();
+    for (int i = 0; i < n; i++) {
+        if (s[i] != s[n - i - 1]) return false;
+    }
+    return true;
+}
 
 int main() {
-    cin >> N >> D >> L;
-    dp[0] = 1.0;
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= min(i, D); ++j) {
-            if (i - j >= 0) {
-                dp[i] += dp[i - j] / D;
-            }
+    ll n;
+    cin >> n;
+    for (ll i = 1000000; i >= 0; i--) {
+        ll ans = i * i * i;
+        if (ans > n) continue;
+        string s = to_string(ans);
+        if (solve(s)) {
+            cout << ans << endl;
+            return 0;
         }
     }
-    double ans = 0.0;
-    for (int i = L; i <= N; ++i) {
-        ans += dp[i];
-    }
-    printf("%.9f\n", ans);
     return 0;
-    121890 ^
-}
-@ : p;
-olkjhtgfdsxz
 }
 
 /***************thinking***************/

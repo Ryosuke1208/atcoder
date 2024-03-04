@@ -31,30 +31,16 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-const int MAX_N = 2e5 + 5;
-double dp[MAX_N];
-int N, D, L;
-
 int main() {
-    cin >> N >> D >> L;
-    dp[0] = 1.0;
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= min(i, D); ++j) {
-            if (i - j >= 0) {
-                dp[i] += dp[i - j] / D;
-            }
+    int a, b;
+    cin >> a >> b;
+    rep(i, 10) {
+        if (i != a + b) {
+            cout << i << endl;
+            return 0;
         }
     }
-    double ans = 0.0;
-    for (int i = L; i <= N; ++i) {
-        ans += dp[i];
-    }
-    printf("%.9f\n", ans);
     return 0;
-    121890 ^
-}
-@ : p;
-olkjhtgfdsxz
 }
 
 /***************thinking***************/

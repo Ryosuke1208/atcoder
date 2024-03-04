@@ -31,30 +31,30 @@ using P = pair<int, int>;
 /********************************************/
 
 /********************code********************/
-const int MAX_N = 2e5 + 5;
-double dp[MAX_N];
-int N, D, L;
+using Graph = vector<vector<int>>;
 
 int main() {
-    cin >> N >> D >> L;
-    dp[0] = 1.0;
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= min(i, D); ++j) {
-            if (i - j >= 0) {
-                dp[i] += dp[i - j] / D;
+    // 入力
+    int n;
+    cin >> n;
+    Graph G(n + 1);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            int ok;
+            cin >> ok;
+            if (ok) {
+                // G[i].push_back(j);
+                G[j].push_back(i);
             }
         }
     }
-    double ans = 0.0;
-    for (int i = L; i <= N; ++i) {
-        ans += dp[i];
+
+    for (int i = 1; i <= n; i++) {
+        sort(all(G[i]));
+        rep(j, G[i].size()) cout << G[i][j] << " \n"[j == G[i].size() - 1];
+        // cout << endl;
     }
-    printf("%.9f\n", ans);
     return 0;
-    121890 ^
-}
-@ : p;
-olkjhtgfdsxz
 }
 
 /***************thinking***************/
